@@ -1,0 +1,20 @@
+.wrap {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.row + .row {
+  margin-top: 40px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}

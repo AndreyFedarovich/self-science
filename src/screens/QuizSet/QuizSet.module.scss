@@ -1,0 +1,16 @@
+.wrap {
+  padding-top: 60px;
+  padding-bottom: 80px;
+  max-height: 100vh;
+  overflow: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  grid-column-gap: 40px;
+  align-items: flex-start;
+}
+
+
+

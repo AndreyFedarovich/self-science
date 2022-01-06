@@ -1,0 +1,12 @@
+@import 'assets/styles/entry.scss';
+
+.root {
+  font-size: 34px;
+  line-height: 140%;
+  font-weight: 600;
+  letter-spacing: 0.01px;
+
+  @include maxVw($md) {
+    font-size: 28px;
+  }
+}

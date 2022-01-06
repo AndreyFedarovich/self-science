@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -13,8 +17,39 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "components/*": [
+        "./src/components/*"
+      ],
+      "constants/*": [
+        "./src/constants/*"
+      ],
+      "layouts/*": [
+        "./src/layouts/*"
+      ],
+      "assets/*": [
+        "./src/assets/*"
+      ],
+      "store/*": [
+        "./src/store/*"
+      ],
+      "screens/*": [
+        "./src/screens/*"
+      ]
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/UiKit/ChartTest/index.jsx" 
+  ]
 }

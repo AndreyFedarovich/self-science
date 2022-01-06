@@ -1,0 +1,18 @@
+@import 'assets/styles/entry.scss';
+
+.root {
+  font-size: 42px;
+  line-height: 140%;
+  font-weight: 600;
+  letter-spacing: 0.01px;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+  @include maxVw($md) {
+    font-size: 38px;
+  }
+  &:read-only {
+    cursor: default;
+  }
+}

@@ -1,0 +1,13 @@
+@import 'assets/styles/entry';
+
+.root {
+  position: absolute;
+  right: 4px;
+  top: 100%;
+  color: $flamingo;
+  font-size: 12px;
+  line-height: 12px;
+  padding-left: 4px;
+  padding-right: 4px;
+  transform: translateY(4px);
+}

@@ -1,0 +1,75 @@
+@import 'assets/styles/entry.scss';
+
+.listHeader {
+  margin-bottom: 8px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.list {
+  position: relative;
+  z-index: 1;
+}
+
+.item + .item {
+  margin-top: 8px;
+}
+
+.item {
+  display: flex;
+}
+
+.link {
+  width: 100%;
+  color: $cuttySark;
+  font-size: 16px;
+  line-height: 140%;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+
+  &:hover {
+    text-shadow: 1px 1px 1px rgba($codGray, 0.12);
+  }
+
+  &:active {
+    color: rgba($codGray, 0.6);
+  }
+
+  &.active {
+    color: rgba($mountainMeadow, 1);
+
+    &:active {
+      color: rgba($mountainMeadow, 0.8);
+    }
+
+    &:hover {
+      text-shadow: 1px 1px 1px rgba($mountainMeadow, 0.15);
+    }
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    right: 10px;
+    left: 10px;
+    border-radius: 4px;
+    top: -2px;
+    bottom: -2px;
+  }
+  &:focus {
+    outline: none;
+  }
+
+  &:not(:active) {
+    &:focus {
+      &:before {
+        box-shadow: 0px 0px 2px 0px rgba($dodgerBlue, 0.5);
+      }
+    }
+  }
+}
+
+.linkValue {
+  position: relative;
+}

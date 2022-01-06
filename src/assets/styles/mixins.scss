@@ -1,0 +1,52 @@
+@mixin minVw($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin maxVw($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin minVh($breakpoint) {
+  @media (min-height: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin maxVh($breakpoint) {
+  @media (max-height: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin focus($color, $radius: 4px, $distance: 4px) {
+  position: relative;
+  outline: none;
+
+  &:after {
+    position: absolute;
+    border-radius: $radius + 2;
+    z-index: 1;
+    top: -$distance + 1;
+    bottom: -$distance + 1;
+    left: -$distance + 1;
+    right: -$distance + 1;
+    box-shadow: 0px 0px 4px 0px rgba($color, 0.4);
+  }
+
+  &:hover {
+    &:after {
+      box-shadow: 0px 0px 4px 0px rgba($color, 0.5);
+    }
+  }
+
+  &:focus:not([tabindex='-1']):not(:active) {
+    &:after {
+      content: '';
+      display: block;
+    }
+  }
+}

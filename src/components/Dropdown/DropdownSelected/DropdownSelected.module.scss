@@ -1,0 +1,32 @@
+@import "assets/styles/entry.scss";
+
+.wrap {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-self: start;
+  margin-top: 10px;
+}
+
+.tag {
+  background-color: transparent;
+  border: 1px solid $alto;
+  border-radius: 4px;
+  padding: 3px 3px 3px 8px;
+  display: flex;
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+.value {
+  color: $dodgerBlue;
+  margin-right: 6px;
+}
+
+.close {
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}

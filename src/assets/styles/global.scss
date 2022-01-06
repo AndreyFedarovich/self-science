@@ -1,0 +1,59 @@
+@import './entry.scss';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Helvetica Neue, sans-serif;
+}
+input[type="text"] {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $saltpan;
+}
+
+textarea {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}

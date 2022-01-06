@@ -1,0 +1,42 @@
+@import 'assets/styles/entry';
+
+.root {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10px;
+  width: 10px;
+
+  &:before {
+    content: "";
+    width: 0;
+    height: 0;
+    display: inline-block;
+    border: 5px solid transparent;
+  }
+}
+
+@mixin caret {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.down {
+  @include caret();
+  &:before {
+    transform: translateY(-3px);
+    border-bottom-color: $alto;
+  }
+}
+
+.up {
+  @include caret();
+  &:before {
+    border-top-color: $alto;
+    transform: translateY(3px);
+  }
+}
