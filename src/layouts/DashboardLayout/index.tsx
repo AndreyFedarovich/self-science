@@ -4,8 +4,8 @@ import Sidebar from 'components/Sidebar';
 import styles from './DashboardLayout.module.scss';
 
 export const getDashboardLayout = (page: ReactElement) => (
-	<div className={styles.root}>
-		<Sidebar />
-		{page}
-	</div>
+  <div className={styles.root}>
+    <Sidebar />
+    {page}
+  </div>
 );

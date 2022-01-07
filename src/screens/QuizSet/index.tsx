@@ -11,64 +11,64 @@ import Panel from './Panel';
 import styles from './QuizSet.module.scss';
 
 function QuestionSet() {
-	const dispatch = useDispatch();
-	const refTitle = useRef<HTMLInputElement>(null);
+  const dispatch = useDispatch();
+  const refTitle = useRef<HTMLInputElement>(null);
 
-	const quizSet = useQuizSet();
-	const { isValidQuestionSet, errors, showErrors } =
-		useQuizSetValidation(quizSet);
+  const quizSet = useQuizSet();
+  const { isValidQuestionSet, errors, showErrors } =
+    useQuizSetValidation(quizSet);
 
-	const handleActivateQuizSet = useCallback(() => {
-		if (!isValidQuestionSet) {
-			showErrors();
-			return;
-		}
+  const handleActivateQuizSet = useCallback(() => {
+    if (!isValidQuestionSet) {
+      showErrors();
+      return;
+    }
 
-		dispatch(activateQuizSet(quizSet?.id as string));
-	}, [isValidQuestionSet, quizSet?.id]);
+    dispatch(activateQuizSet(quizSet?.id as string));
+  }, [isValidQuestionSet, quizSet?.id]);
 
-	const handleDeactivateQuizSet = useCallback(() => {
-		dispatch(deactivateQuizSet(quizSet?.id as string));
-	}, [quizSet?.id]);
+  const handleDeactivateQuizSet = useCallback(() => {
+    dispatch(deactivateQuizSet(quizSet?.id as string));
+  }, [quizSet?.id]);
 
-	if (!quizSet) {
-		return null;
-	}
+  if (!quizSet) {
+    return null;
+  }
 
-	const isActiveQuizSet = quizSet?.status === QUIZ_SET_STATUSES.ACTIVE;
+  const isActiveQuizSet = quizSet?.status === QUIZ_SET_STATUSES.ACTIVE;
 
-	const renderContent = () => {
-		if (isActiveQuizSet) {
-			return 'Active Quiz Set';
-		}
+  const renderContent = () => {
+    if (isActiveQuizSet) {
+      return 'Active Quiz Set';
+    }
 
-		return <Questions quizSetId={quizSet.id} list={quizSet.questions} />;
-	};
+    return <Questions quizSetId={quizSet.id} list={quizSet.questions} />;
+  };
 
-	return (
-		<div className={styles.wrap}>
-			<WrapContent>
-				<div className={styles.grid}>
-					<div className={styles.content}>
-						<InputHeader
-							readOnly={isActiveQuizSet}
-							ref={refTitle}
-							value={quizSet.title || ''}
-							quizSetId={quizSet.id}
-						/>
-						{renderContent()}
-					</div>
-					<Panel
-						onActivateSet={handleActivateQuizSet}
-						onDeactivate={handleDeactivateQuizSet}
-						errors={errors}
-						isActiveQuizSet={isActiveQuizSet}
-						isValidQuestionSet={isValidQuestionSet}
-					/>
-				</div>
-			</WrapContent>
-		</div>
-	);
+  return (
+    <div className={styles.wrap}>
+      <WrapContent>
+        <div className={styles.grid}>
+          <div className={styles.content}>
+            <InputHeader
+              readOnly={isActiveQuizSet}
+              ref={refTitle}
+              value={quizSet.title || ''}
+              quizSetId={quizSet.id}
+            />
+            {renderContent()}
+          </div>
+          <Panel
+            onActivateSet={handleActivateQuizSet}
+            onDeactivate={handleDeactivateQuizSet}
+            errors={errors}
+            isActiveQuizSet={isActiveQuizSet}
+            isValidQuestionSet={isValidQuestionSet}
+          />
+        </div>
+      </WrapContent>
+    </div>
+  );
 }
 
 export default QuestionSet;
