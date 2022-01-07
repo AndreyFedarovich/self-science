@@ -1,5 +1,10 @@
 import React, {
-  memo, useState, useRef, FocusEvent, FormEvent, ChangeEvent,
+  memo,
+  useState,
+  useRef,
+  FocusEvent,
+  FormEvent,
+  ChangeEvent,
 } from 'react';
 import DropdownMenu from './DropdownMenu';
 import onBlurMenu from './helpers/blurMenu.helper';
@@ -10,17 +15,22 @@ import DropdownTrigger from './DropdownInput';
 import styles from './Dropdown.module.scss';
 import DropdownButton from './DropdownButton';
 
+export interface DropdownOptionType {
+  key: string,
+  value: string
+}
+
 interface DropdownProps {
   name?: string;
-  options: string[];
-  onSelect?: (a: string) => void;
-  selected?: string[];
+  options: DropdownOptionType[];
+  onSelect?: any // TODO: Check () => void;
+  selectedOptions?: DropdownOptionType[];
   placeholder?: string;
   label?: string;
   isMultiple?: boolean;
   onSearch?: (event: FormEvent<HTMLInputElement>) => void;
   searchValue?: string;
-  mode?: 'plain' | 'default'
+  mode?: 'plain' | 'default';
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -30,7 +40,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   name,
   label,
   placeholder,
-  selected,
+  selectedOptions,
   onSearch,
   searchValue,
   mode = 'default',
@@ -53,8 +63,8 @@ const Dropdown: React.FC<DropdownProps> = ({
       return searchValue || localSearchValue;
     }
 
-    if (!isMultiple && selected?.length) {
-      return selected[0];
+    if (!isMultiple && selectedOptions?.length) {
+      return selectedOptions[0].value;
     }
 
     return '';
@@ -65,50 +75,63 @@ const Dropdown: React.FC<DropdownProps> = ({
   };
 
   const handleInputBlur = (event: FocusEvent<HTMLInputElement>) => {
-    onBlurMenu({ target: event.relatedTarget, refs: [menuRef, selectedRef], setIsOpen });
+    onBlurMenu({
+      target: event.relatedTarget,
+      refs: [menuRef, selectedRef],
+      setIsOpen,
+    });
   };
 
   const handleButtonBlur = (event: FocusEvent<HTMLButtonElement>) => {
-    onBlurMenu({ target: event.relatedTarget, refs: [menuRef, selectedRef], setIsOpen });
+    onBlurMenu({
+      target: event.relatedTarget,
+      refs: [menuRef, selectedRef],
+      setIsOpen,
+    });
   };
 
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     setLocalSearchValue(event.target.value);
   };
 
-  const modifiedOptions = getOptions({ searchValue: searchValue || localSearchValue, options });
+  const modifiedOptions = getOptions({
+    searchValue: searchValue || localSearchValue,
+    options,
+  });
 
   return (
     <div className={styles.root}>
-      {mode === 'default'
-        ? (
-          <DropdownTrigger
-            readOnly={!onSearch}
-            name={name || ''}
-            onChange={handleSearch}
-            label={label}
-            ref={inputRef}
-            placeholder={placeholder}
-            value={getValue()}
-            onFocus={handleFocus}
-            onBlur={handleInputBlur}
-            isOpen={isOpen}
-          />
-        ) : (
-          <DropdownButton
-            name={name || ''}
-            ref={buttonRef}
-            label={label}
-            placeholder={placeholder}
-            value={getValue()}
-            onFocus={handleFocus}
-            onBlur={handleButtonBlur}
-            isOpen={isOpen}
-          />
-        )}
-      {isMultiple && selected?.length && (
+      {mode === 'default' ? (
+        <DropdownTrigger
+          readOnly={!onSearch}
+          name={name || ''}
+          onChange={handleSearch}
+          label={label}
+          ref={inputRef}
+          placeholder={placeholder}
+          value={getValue()}
+          onFocus={handleFocus}
+          onBlur={handleInputBlur}
+          isOpen={isOpen}
+        />
+      ) : (
+        <DropdownButton
+          name={name || ''}
+          ref={buttonRef}
+          label={label}
+          placeholder={placeholder}
+          value={getValue()}
+          onFocus={handleFocus}
+          onBlur={handleButtonBlur}
+          isOpen={isOpen}
+        />
+      )}
+      {isMultiple && selectedOptions?.length && (
         <div className={styles.row} ref={selectedRef}>
-          <DropdownSelected unselect={onSelect} selected={selected = ['One', 'Two']} />
+          <DropdownSelected
+            unselect={onSelect}
+            selectedOptions={(selectedOptions = [])}
+          />
         </div>
       )}
       <DropdownMenu
@@ -118,7 +141,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         isMultiple={isMultiple}
         options={modifiedOptions}
         setIsOpen={setIsOpen}
-        selected={selected}
+        selectedOptions={selectedOptions}
       />
     </div>
   );

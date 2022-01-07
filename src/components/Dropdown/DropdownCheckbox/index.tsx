@@ -2,19 +2,15 @@ import React, { memo } from 'react';
 import style from './DropdownCheckbox.module.scss';
 
 interface IDropdownCheckboxProps {
-  isSelected?: boolean;
+	isSelected?: boolean;
 }
 
 function DropdownCheckbox({ isSelected }: IDropdownCheckboxProps) {
-  return (
-    <span className={style.root}>
-      {isSelected ? '-' : '+'}
-    </span>
-  );
+	return <span className={style.root}>{isSelected ? '-' : '+'}</span>;
 }
 
 DropdownCheckbox.defaultProps = {
-  isSelected: false,
+	isSelected: false,
 };
 
 export default memo(DropdownCheckbox);

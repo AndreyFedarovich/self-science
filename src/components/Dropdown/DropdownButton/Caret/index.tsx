@@ -3,11 +3,11 @@ import cn from 'classnames';
 import styles from './Caret.module.scss';
 
 type CaretProps = {
-  isOpen: boolean,
+	isOpen: boolean;
 };
 
 function Caret({ isOpen }: CaretProps) {
-  return <span className={cn(styles.root, styles[isOpen ? 'down' : 'up'])} />;
+	return <span className={cn(styles.root, styles[isOpen ? 'down' : 'up'])} />;
 }
 
 export default memo(Caret);

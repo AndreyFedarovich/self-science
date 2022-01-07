@@ -14,10 +14,7 @@ import Textarea from 'components/FormComponents/Textarea';
 import Dropdown from 'components/Dropdown';
 import { memo } from 'react';
 
-
-const testOptions = [
-  'one', 'two', 'three'
-];
+const testOptions = [{ key: 'one', value: 'one' }, { key: 'two', value: 'two' }];
 
 const UiKit = () => (
   <div className={styles.wrap}>
@@ -41,18 +38,18 @@ const UiKit = () => (
         <div className={cn(styles.grid3, gap.mt8)}>
           <Dropdown
             name="Select"
-            selected={['one']}
+            selectedOptions={[{ key: 'one', value: 'one' }]}
             options={testOptions}
             onSelect={() => null}
-            placeholder='Default'
+            placeholder="Default"
           />
           <Dropdown
             name="Select"
             isMultiple
-            onSearch={() => console.log('sd')}
-            selected={['one', 'two']}
-            options={testOptions} onSelect={() => null}
-            placeholder='Search'
+            selectedOptions={[{ key: 'one', value: 'one' }]}
+            options={testOptions}
+            onSelect={() => null}
+            placeholder="Search"
           />
         </div>
       </div>
@@ -63,14 +60,9 @@ const UiKit = () => (
           <Input placeholder="Default state" />
           <Input isDisabled placeholder="Disabled state" />
           <Input hasError error="Invalid field" placeholder="Error state" />
-
           <Textarea placeholder="Default state" />
           <Textarea isDisabled placeholder="Disabled state" />
-          <Textarea
-            hasError
-            error="Invalid field"
-            placeholder="Error state"
-          />
+          <Textarea hasError error="Invalid field" placeholder="Error state" />
         </div>
       </div>
       <div className={styles.row}>
@@ -80,16 +72,8 @@ const UiKit = () => (
           <ButtonPrimary text="Success" uiType="success" />
           <ButtonPrimary text="Warning" uiType="warning" />
           <ButtonPrimary isDisabled text="Default Disabled" />
-          <ButtonPrimary
-            isDisabled
-            text="Success Disabled"
-            uiType="success"
-          />
-          <ButtonPrimary
-            isDisabled
-            text="Warning Disabled"
-            uiType="warning"
-          />
+          <ButtonPrimary isDisabled text="Success Disabled" uiType="success" />
+          <ButtonPrimary isDisabled text="Warning Disabled" uiType="warning" />
         </div>
       </div>
     </WrapContent>

@@ -3,17 +3,17 @@ import { quizSetType } from '../../types/quizSetTypes';
 import { SET_QUIZ_SETS } from './types';
 
 interface QuizzesState {
-  quizSets: quizSetType[];
+	quizSets: quizSetType[];
 }
 
 const initialState: QuizzesState = {
-  quizSets: [],
+	quizSets: [],
 };
 
-const quizzesReducer = createReducer(initialState, (builder) => {
-  builder.addCase(SET_QUIZ_SETS, (state: QuizzesState, action: AnyAction) => {
-    state.quizSets = action.payload;
-  });
+const quizzesReducer = createReducer(initialState, builder => {
+	builder.addCase(SET_QUIZ_SETS, (state: QuizzesState, action: AnyAction) => {
+		state.quizSets = action.payload;
+	});
 });
 
 export default quizzesReducer;

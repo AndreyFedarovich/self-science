@@ -1,49 +1,47 @@
 @import 'assets/styles/entry';
 
 .root {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+	position: relative;
 }
 
 .wrap {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	position: relative;
 }
 
 .placeholder {
-  position: absolute;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  padding-left: 12px;
-  font-size: 16px;
-  font-weight: 300;
-  letter-spacing: 0.01px;
-  color: rgba($codGray, 0.5);
-  line-height: 40px;
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	padding-left: 12px;
+	font-size: 16px;
+	font-weight: 300;
+	letter-spacing: 0.01px;
+	color: rgba($codGray, 0.5);
+	line-height: 40px;
 }
-
 
 .button {
-  position: relative;
-  align-items: center;
-  display: inline-flex;
-  align-self: flex-start;
-  border: 0;
-  background-color: transparent;
-  font-size: 16px;
-  font-weight: 300;
-  letter-spacing: 0.01px;
-  color: $codGray;
-  outline: none;
-  line-height: 140%;
-  padding: 0;
-  cursor: pointer;
+	position: relative;
+	align-items: center;
+	display: inline-flex;
+	align-self: flex-start;
+	border: 0;
+	background-color: transparent;
+	font-size: 16px;
+	font-weight: 300;
+	letter-spacing: 0.01px;
+	color: $codGray;
+	outline: none;
+	line-height: 140%;
+	padding: 0;
+	cursor: pointer;
 }
-

@@ -3,7 +3,7 @@ import { getDashboardLayout } from 'layouts/DashboardLayout';
 import QuizSet from 'screens/QuizSet';
 
 function PageQuizSet() {
-  return <QuizSet />;
+	return <QuizSet />;
 }
 
 PageQuizSet.getLayout = getDashboardLayout;

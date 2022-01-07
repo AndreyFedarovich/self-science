@@ -3,7 +3,7 @@ import { HProps } from '../InterfaceHeader';
 import styles from './H4.module.scss';
 
 function H3({ children }: HProps) {
-  return <h3 className={styles.root}>{children}</h3>;
+	return <h3 className={styles.root}>{children}</h3>;
 }
 
 export default memo(H3);

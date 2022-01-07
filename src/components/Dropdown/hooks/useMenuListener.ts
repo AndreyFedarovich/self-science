@@ -2,34 +2,34 @@ import { useEffect, useCallback } from 'react';
 import onBlurMenu from '../helpers/blurMenu.helper';
 
 interface MenuCloseListenerProps {
-  refs: any[];
-  setIsOpen: (a: boolean) => void;
-  isOpen: boolean
+	refs: any[];
+	setIsOpen: (a: boolean) => void;
+	isOpen: boolean;
 }
 
 export default function useMenuListener({
-  refs,
-  setIsOpen,
-  isOpen,
+	refs,
+	setIsOpen,
+	isOpen,
 }: MenuCloseListenerProps) {
-  const handleClick = useCallback(
-    (event) => {
-      onBlurMenu({
-        target: event.target,
-        refs,
-        setIsOpen,
-      });
-    },
-    [refs, setIsOpen],
-  );
+	const handleClick = useCallback(
+		event => {
+			onBlurMenu({
+				target: event.target,
+				refs,
+				setIsOpen,
+			});
+		},
+		[refs, setIsOpen],
+	);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClick);
-    }
+	useEffect(() => {
+		if (isOpen) {
+			document.addEventListener('mousedown', handleClick);
+		}
 
-    return () => {
-      document.removeEventListener('mousedown', handleClick);
-    };
-  }, [isOpen]);
+		return () => {
+			document.removeEventListener('mousedown', handleClick);
+		};
+	}, [isOpen]);
 }

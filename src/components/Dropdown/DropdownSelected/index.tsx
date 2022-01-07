@@ -1,22 +1,23 @@
+import { DropdownOptionType } from '..';
 import DropdownCheckbox from '../DropdownCheckbox';
 import styles from './DropdownSelected.module.scss';
 
 interface DropdownSelectedProps {
   unselect?: (a: string) => void;
-  selected: string[];
+  selectedOptions: DropdownOptionType[];
 }
 
-function DropdownSelected({ unselect, selected }: DropdownSelectedProps) {
+function DropdownSelected({ unselect, selectedOptions }: DropdownSelectedProps) {
   const handleUnselect = (option: string) => () => {
     unselect?.(option);
   };
 
   return (
     <div className={styles.wrap}>
-      {selected?.map((option: string) => (
-        <div key={option} className={styles.tag}>
-          <span className={styles.value}>{option}</span>
-          <button className={styles.close} onClick={handleUnselect(option)}>
+      {selectedOptions?.map(({ key, value }) => (
+        <div key={key} className={styles.tag}>
+          <span className={styles.value}>{value}</span>
+          <button className={styles.close} onClick={handleUnselect(key)}>
             <DropdownCheckbox isSelected />
           </button>
         </div>

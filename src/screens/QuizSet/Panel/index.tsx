@@ -5,19 +5,21 @@ import getButtonUiType from './helpers/getButtonUiType';
 import styles from './Panel.module.scss';
 
 interface PanelProps {
-  isValidQuestionSet: boolean,
-  isActiveQuizSet: boolean,
-  errors: string[]
-  onActivateSet: () => void
-  onDeactivate: () => void
+  isValidQuestionSet: boolean;
+  isActiveQuizSet: boolean;
+  errors: string[];
+  onActivateSet: () => void;
+  onDeactivate: () => void;
 }
 
-const options = [
-  'Never', 'Daily', 'Weekly',
-];
+const options = [{ key: 'Never', value: 'Never' }, { key: 'Daily', value: 'Daily' }, { key: 'Weekly', value: 'Weekly' }];
 
 function Panel({
-  onActivateSet, onDeactivate, isValidQuestionSet, isActiveQuizSet, errors,
+  onActivateSet,
+  onDeactivate,
+  isValidQuestionSet,
+  isActiveQuizSet,
+  errors,
 }: PanelProps) {
   const buttonUiType = getButtonUiType({ isActiveQuizSet, isValidQuestionSet });
 
@@ -25,10 +27,8 @@ function Panel({
     <div className={styles.root}>
       <div className={styles.panel}>
         {isActiveQuizSet ? (
-          <ButtonPrimary
-            onClick={onDeactivate}
-            text="Edit set"
-          />) : (
+          <ButtonPrimary onClick={onDeactivate} text="Edit set" />
+        ) : (
           <ButtonPrimary
             onClick={onActivateSet}
             uiType={buttonUiType}
@@ -38,7 +38,7 @@ function Panel({
         <div className={styles.row}>
           <Dropdown
             mode="plain"
-            selected={[options[0]]}
+            selectedOptions={[options[0]]}
             options={options}
             label="Notify me about this set"
           />
@@ -46,7 +46,9 @@ function Panel({
       </div>
       {!isValidQuestionSet && (
         <div className={styles.errors}>
-          {errors.map((error) => <div key={error}>{error}</div>)}
+          {errors.map(error => (
+            <div key={error}>{error}</div>
+          ))}
         </div>
       )}
     </div>

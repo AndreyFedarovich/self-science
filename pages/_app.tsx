@@ -8,21 +8,19 @@ import { store } from 'store/store';
 import 'assets/styles/global.scss';
 
 type NextPageWithLayout = NextPage & {
-  getLayout?: (page: ReactElement) => ReactNode
-}
+	getLayout?: (page: ReactElement) => ReactNode;
+};
 
 type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout
-}
+	Component: NextPageWithLayout;
+};
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout || ((page) => page);
+	const getLayout = Component.getLayout || (page => page);
 
-  return (
-    <Provider store={store}>
-      {getLayout(<Component {...pageProps} />)}
-    </Provider>
-  );
+	return (
+		<Provider store={store}>{getLayout(<Component {...pageProps} />)}</Provider>
+	);
 }
 
 export default App;

@@ -6,21 +6,21 @@ import { selectQuizSetById } from 'store/quizzes/selectors';
 import { createQuizSet } from 'store/quizzes/thunks';
 
 const useQuizSet = () => {
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const { id: quizSetId } = router.query;
-  const quizSet = useSelector(selectQuizSetById(quizSetId as string));
+	const dispatch = useDispatch();
+	const router = useRouter();
+	const { id: quizSetId } = router.query;
+	const quizSet = useSelector(selectQuizSetById(quizSetId as string));
 
-  useEffect(() => {
-    if (!quizSet) {
-      (async () => {
-        const createdSetId = await dispatch(createQuizSet());
-        router.replace(`${ROUTE_QUIZ_SET}/${createdSetId}`);
-      })();
-    }
-  }, [quizSet]);
+	useEffect(() => {
+		if (!quizSet) {
+			(async () => {
+				const createdSetId = await dispatch(createQuizSet());
+				router.replace(`${ROUTE_QUIZ_SET}/${createdSetId}`);
+			})();
+		}
+	}, [quizSet]);
 
-  return quizSet;
+	return quizSet;
 };
 
 export default useQuizSet;

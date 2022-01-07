@@ -3,12 +3,12 @@ import cn from 'classnames';
 import styles from './WrapContent.module.scss';
 
 interface WrapContentProps {
-  children: ReactNode;
-  className?: string
+	children: ReactNode;
+	className?: string;
 }
 
 function WrapContent({ children, className }: WrapContentProps) {
-  return <div className={cn(styles.root, className)}>{children}</div>;
+	return <div className={cn(styles.root, className)}>{children}</div>;
 }
 
 export default memo(WrapContent);
